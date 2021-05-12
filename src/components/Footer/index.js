@@ -7,7 +7,7 @@ import './styles.scss';
 
 // == Composant
 const Footer = () => (
-  <div> Footer</div>
+  <footer className="copyright"> Dev of Thrones, le blog du dev React - 2021</footer>
 );
 
 // == Export

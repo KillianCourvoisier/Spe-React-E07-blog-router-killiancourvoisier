@@ -1,9 +1,17 @@
-.app {
-  width: 500px;
-  margin: 1em auto;
-  text-align: center;
-}
+@use 'src/styles/vars';
 
-.app img {
-  max-width: 150px;
+.menu {
+  text-align: center;
+  padding:vars.$gutter;
+  border-bottom: 1px solid vars.$alt-color;
+
+  &-link {
+    margin: 0 1rem;
+    cursor: pointer;
+    color: vars.$dark-color;
+
+    &:hover, &.active {
+      color: vars.$primary-color;
+    }
+  }
 }

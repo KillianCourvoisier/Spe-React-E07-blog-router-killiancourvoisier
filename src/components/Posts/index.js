@@ -4,10 +4,18 @@ import PropTypes from 'prop-types';
 
 // == Import
 import './styles.scss';
+import Post from './Post';
 
 // == Composant
 const Posts = () => (
-  <div> Posts</div>
+  <main className="posts">
+    <h1 className="posts-title">Dev of Thrones</h1>
+    <div className="posts-list">
+      <Post />
+      <Post />
+      <Post />
+    </div>
+  </main>
 );
 
 // == Export

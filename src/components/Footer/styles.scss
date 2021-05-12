@@ -1,9 +1,8 @@
-.app {
-  width: 500px;
-  margin: 1em auto;
-  text-align: center;
-}
+@use 'src/styles/vars';
 
-.app img {
-  max-width: 150px;
+.copyright {
+  text-align: center;
+  padding: vars.$gutter * 2 ;
+  background-color: vars.$dark-color;
+  color: vars.$alt-color;
 }

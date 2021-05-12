@@ -2,14 +2,14 @@
 import React from 'react';
 
 // == Import
-import './styles.css';
+import './styles.scss';
 import Header from '../Header';
 import Posts from '../Posts';
 import Footer from '../Footer';
 
 // == Composant
 const App = () => (
-  <div className="app">
+  <div className="blog">
     <Header />
     <Posts />
     <Footer />

@@ -7,7 +7,12 @@ import './styles.scss';
 
 // == Composant
 const Header = () => (
-  <div> Header</div>
+  <header className="menu">
+    <nav>
+      <a className="menu-link">Lien</a>
+      <a className="menu-link active">Lien</a>
+    </nav>
+  </header>
 );
 
 // == Export
