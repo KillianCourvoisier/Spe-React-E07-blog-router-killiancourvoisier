@@ -12,31 +12,23 @@ import categoriesData from '../../data/categories';
 import postsData from '../../data/posts';
 
 const filterPosts = (category) => {
-  if (category === 'accueil') {
+  if (category === 'Accueil') {
     return postsData;
   }
-  return postsData.filter((articleObject) => articleObject.category.toLowerCase() === category);
+  return postsData.filter((articleObject) => articleObject.category === category);
 };
 
 // == Composant
 const App = () => (
   <div className="blog">
     <Header list={categoriesData} />
-    <Route exact path="/">
-      <Posts list={filterPosts('accueil')} />
-    </Route>
-    <Route exact path="/angular">
-      <Posts list={filterPosts('angular')} />
-    </Route>
-    <Route exact path="/react">
-      <Posts list={filterPosts('react')} />
-    </Route>
-    <Route exact path="/oclock">
-      <Posts list={filterPosts('o’clock')} />
-    </Route>
-    <Route exact path="/autre">
-      <Posts list={filterPosts('autre')} />
-    </Route>
+    {
+      categoriesData.map((categoryObject) => (
+        <Route exact key={categoryObject.route} path={categoryObject.route}>
+          <Posts list={filterPosts(categoryObject.label)} />
+        </Route>
+      ))
+    }
     <Footer year={2021} />
   </div>
 );
