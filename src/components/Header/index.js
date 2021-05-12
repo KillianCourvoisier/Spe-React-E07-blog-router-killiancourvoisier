@@ -6,14 +6,31 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 // == Composant
-const Header = () => (
+const Header = ({ list }) => (
   <header className="menu">
     <nav>
-      <a className="menu-link">Lien</a>
-      <a className="menu-link active">Lien</a>
+      {
+        list.map((categoryObject) => (
+          <a
+            key={categoryObject.label}
+            href={categoryObject.route}
+            className="menu-link"
+          >
+            {categoryObject.label}
+          </a>
+        ))
+      }
+
     </nav>
   </header>
 );
+
+Header.propTypes = {
+  list: PropTypes.arrayOf(PropTypes.shape({
+    route: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+  })).isRequired,
+};
 
 // == Export
 export default Header;

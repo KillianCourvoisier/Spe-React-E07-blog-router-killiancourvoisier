@@ -6,9 +6,13 @@ import PropTypes from 'prop-types';
 import './styles.scss';
 
 // == Composant
-const Footer = () => (
-  <footer className="copyright"> Dev of Thrones, le blog du dev React - 2021</footer>
+const Footer = ({ year }) => (
+  <footer className="copyright"> Dev of Thrones, le blog du dev React - {year}</footer>
 );
+
+Footer.propTypes = {
+  year: PropTypes.number.isRequired,
+};
 
 // == Export
 export default Footer;
