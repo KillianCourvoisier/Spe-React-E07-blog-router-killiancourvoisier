@@ -1,5 +1,5 @@
 // == Import npm
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 // == Import
@@ -20,23 +20,40 @@ const filterPosts = (category) => {
 };
 
 // == Composant
-const App = () => (
-  <div className="blog">
-    <Header list={categoriesData} />
-    <Switch>
-      {
+const App = () => {
+  const [state, setState] = useState({
+    count: 0,
+    prenom: 'BG',
+  });
+  return (
+    <div className="blog">
+      <Header list={categoriesData} />
+      <p>Bienvenu {state.prenom} . T'as Master-click {state.count} fois sur le bouton</p>
+      <button
+        type="button"
+        onClick={() => {
+          setState({
+            ...state,
+            count: state.count + 1,
+          });
+        }}
+      >Cliquez-moi
+      </button>
+      <Switch>
+        {
         categoriesData.map((categoryObject) => (
           <Route exact key={categoryObject.route} path={categoryObject.route}>
             <Posts list={filterPosts(categoryObject.label)} />
           </Route>
         ))
       }
-      <Redirect frome="/jquery" to="/react" />
-      <NotFound />
-    </Switch>
-    <Footer year={2021} />
-  </div>
-);
+        <Redirect frome="/jquery" to="/react" />
+        <NotFound />
+      </Switch>
+      <Footer year={2021} />
+    </div>
+  );
+};
 
 // == Export
 export default App;
