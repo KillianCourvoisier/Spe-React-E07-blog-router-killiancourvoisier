@@ -7,6 +7,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import './styles.scss';
 import Header from '../Header';
 import Posts from '../Posts';
+import FullPost from '../Posts/FullPost';
 import Footer from '../Footer';
 import NotFound from '../NotFound';
 import Spinner from '../Spinner';
@@ -82,6 +83,9 @@ const App = () => {
           </Route>
         ))
       }
+          <Route path="/articles/:slug">
+            <FullPost list={posts} />
+          </Route>
           <Redirect frome="/jquery" to="/react" />
           <NotFound />
         </Switch>

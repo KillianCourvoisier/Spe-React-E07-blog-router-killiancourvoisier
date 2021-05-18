@@ -1,10 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import DOMPurify from 'dompurify';
 
-const Post = ({ title, excerpt, category }) => (
+const Post = ({
+  title, excerpt, category, slug,
+}) => (
   <article className="post">
-    <h2 className="post-title">{title}</h2>
+    <Link to={`/articles/${slug}`}>
+      <h2 className="post-title">{title}</h2>
+    </Link>
     <div className="post-category">{category}</div>
     <p
       className="post-excerpt"
@@ -17,6 +22,7 @@ Post.propTypes = {
   title: PropTypes.string.isRequired,
   excerpt: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
 };
 
 export default Post;

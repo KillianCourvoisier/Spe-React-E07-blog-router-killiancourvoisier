@@ -21,8 +21,10 @@
 }
 
 .post {
+
   width: 50%;
   padding: vars.$gutter;
+
   &:hover {
     background-color:vars.$post-hover-color;
   }
@@ -51,4 +53,8 @@
     font-weight: 300;
     color: vars.$post-text-color;
   }
+}
+
+.full{
+  width: 100%;
 }
