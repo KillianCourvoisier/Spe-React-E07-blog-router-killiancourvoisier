@@ -10,8 +10,12 @@ const Footer = ({ year }) => (
   <footer className="copyright"> Dev of Thrones, le blog du dev React - {year}</footer>
 );
 
+Footer.defaultProps = {
+  year: 2020,
+};
+
 Footer.propTypes = {
-  year: PropTypes.number.isRequired,
+  year: PropTypes.number,
 };
 
 // == Export
