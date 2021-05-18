@@ -1,5 +1,6 @@
 // == Import npm
 import React, { useState } from 'react';
+import axios from 'axios';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 // == Import
@@ -11,23 +12,44 @@ import NotFound from '../NotFound';
 import Spinner from '../Spinner';
 
 import categoriesData from '../../data/categories';
-import postsData from '../../data/posts';
 
-const filterPosts = (category) => {
-  if (category === 'Accueil') {
-    return postsData;
-  }
-  return postsData.filter((articleObject) => articleObject.category === category);
-};
+const URL = 'https://oblog-sarah-maau.herokuapp.com/api/posts';
 
 // == Composant
 const App = () => {
   const [loading, setLoading] = useState(false);
-  const toggle = () => setLoading(!loading);
+
+  const [posts, setPosts] = useState([]);
+
+  const fetchPosts = () => {
+    setLoading(true);
+    axios({
+      method: 'get',
+      url: `${URL}/posts`,
+    })
+      .then((response) => {
+        console.log(response);
+        setPosts(response.data);
+      })
+      .catch((error) => {
+        console.trace(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const filterPosts = (category) => {
+    if (category === 'Accueil') {
+      return posts;
+    }
+    return posts.filter((articleObject) => articleObject.category === category);
+  };
+
   return (
     <div className="blog">
       <Header list={categoriesData} />
-      <button type="button" onClick={toggle}>Toggle Loading</button>
+      <button type="button" onClick={fetchPosts}>Toggle Loading</button>
       {
         loading && <Spinner />
       }
